@@ -1,0 +1,81 @@
+<script>
+    /*Faça um código em JavaScript (usando if-else ou case) que receba do usuário as
+seguintes informações, nesta ordem:
+>>> o nome completo do empregado;
+>>> seu número de CPF;
+>>> o salário bruto desse empregado;
+>>> o código do seu cargo.
+(1) Aplique o desconto de contribuição sindical (descontar do salário bruto), dessa forma:
+
+Código do
+cargo
+
+Desconto de Salário Bruto
+para Contribuição Sindical
+
+abc123 9,5%
+cda236 8,5%
+xyz999 5,9%
+9a8b7c 4,5%
+log456 3,0%
+mnd56 1,5%
+
+(2) Todos os empregados com salários brutos superiores a R$ 1.412,00 (salário mínimo)
+pagarão o imposto de previdência social, que equivale a 12,5% do salário bruto. Caso
+contrário, não pagarão o imposto de previdência social.
+Após o processamento dos cálculos acima descritos, apresente apenas as informações
+abaixo separando-as por linha individual ('<br>'), obedecendo esta sequência:
+>> linha 1 - o nome completo do empregado e seu CPF;
+>> linha 2 - o valor em reais de contribuição sindical;
+>> linha 3 - o valor em reais do desconto para o imposto de previdência social;
+>> linha 4 - o salário final do empregado após os descontos.*/
+
+
+
+//Início 
+const nome = prompt(`Informe o seu nome completo`);
+const cpf = prompt(`Informe seu CPF completo`);
+const salarioBruto = Number(prompt(`Informe seu salario bruto`));
+const cdgCargo = prompt(`Informe o código do seu cargo`);
+let descontoSindical;
+let imposto;
+let salarioFinal;
+//Metade  
+switch (cdgCargo) {
+    case `abc123`:
+        descontoSindical = salarioBruto * 0.095;
+        break;
+    case `cda236`: 
+        descontoSindical = salarioBruto * 0.085;
+        break;
+    case `xyz999`: 
+        descontoSindical = salarioBruto * 0.059;
+        break;
+    case `9a8b7c`: 
+        descontoSindical = salarioBruto * 0.045;
+        break;
+    case `log456`: 
+        descontoSindical = salarioBruto * 0.03;
+        break;
+    case `mnd56`: 
+        descontoSindical = salarioBruto * 0.015;
+        break;
+    default:
+        alert(`Inválido`)
+        break;
+}
+
+if (salarioBruto > 1412) {
+    imposto = salarioBruto * 0.125
+    salarioFinal = salarioBruto - (descontoSindical + imposto)
+} else {
+    imposto = 0
+    salarioFinal = salarioBruto - (descontoSindical + imposto)
+} 
+//Fim
+
+document.write(`Nome: ${nome}; CPF: ${cpf} <br>`);
+document.write(`Contribuição Sindical de: ${descontoSindical} R$ <br>`);
+document.write(`Imposto de Previdencia Social: ${imposto} R$ <br>`);
+document.write(`Salário: ${salarioFinal} R$`)
+</script>
